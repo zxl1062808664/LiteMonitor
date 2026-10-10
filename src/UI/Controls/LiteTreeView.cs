@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -21,10 +22,17 @@ namespace LiteMonitor.src.UI.Controls
         private TreeNode _hoverNode;
 
         // 布局参数
-        public int ColValueWidth { get; set; } = 70;  
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int ColValueWidth { get; set; } = 70;
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int ColMaxWidth { get; set; } = 70;
-        public int RightMargin { get; set; } = 6;    
-        public int IconWidth { get; set; } = 20;      
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int RightMargin { get; set; } = 6;
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public int IconWidth { get; set; } = 20;
 
         public LiteTreeView()
         {

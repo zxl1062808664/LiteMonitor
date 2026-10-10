@@ -155,7 +155,7 @@ A lightweight and customizable desktop hardware monitoring tool — real-time mo
 
 ### 环境要求
 - Windows 10 / 11  
-- .NET 8 SDK  
+- .NET 10 SDK
 - Visual Studio 2022 或 Rider
 
 ### 编译命令
@@ -167,7 +167,7 @@ dotnet build -c Release
 
 输出文件：
 ```
-/bin/Release/net8.0-windows/LiteMonitor.exe
+/bin/Release/net10.0-windows/LiteMonitor.exe
 ```
 
 ---

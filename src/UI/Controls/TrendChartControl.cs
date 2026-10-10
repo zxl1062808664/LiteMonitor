@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -41,8 +42,13 @@ namespace LiteMonitor
         private string? _highlightKey;
         private int _legendRows = 1;
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public float? Threshold { get; set; }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Title { get; set; } = "";
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string EmptyText { get; set; } = "暂无历史数据";
         public string? HighlightKey => _highlightKey;
 

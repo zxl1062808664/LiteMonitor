@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <Nullable>enable</Nullable>
@@ -20,7 +20,6 @@
 
 	<ItemGroup>
     <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.6" />
-    <PackageReference Include="System.Text.Json" Version="9.0.10" />
   </ItemGroup>
 
     <!-- 自动复制 themes 与 lang 目录下的所有文件 -->
@@ -42,9 +41,6 @@
     </ItemGroup>
 	<ItemGroup>
 		<Content Include="resources\LiteMonitor.Updater.exe">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-    <Content Include="使用说明(必读).txt">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
