@@ -165,9 +165,17 @@ cd LiteMonitor
 dotnet build -c Release
 ```
 
+Create all three Release packages:
+
+```bat
+build-release.bat
+```
+
 Output:
 ```
-/bin/Release/net10.0-windows/LiteMonitor.exe
+/release/LiteMonitor_v1.3.6-net8.0-win-x64.zip
+/release/LiteMonitor_v1.3.6-net9.0-win-x64.zip
+/release/LiteMonitor_v1.3.6-net10.0-win-x64.zip
 ```
 
 ---

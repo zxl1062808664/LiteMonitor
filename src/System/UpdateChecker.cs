@@ -23,6 +23,16 @@ namespace LiteMonitor
     /// </summary>
     public static class UpdateChecker
     {
+#if NET10_0_OR_GREATER
+        private const string PackageTargetFramework = "net10.0";
+#elif NET9_0_OR_GREATER
+        private const string PackageTargetFramework = "net9.0";
+#elif NET8_0_OR_GREATER
+        private const string PackageTargetFramework = "net8.0";
+#else
+        private const string PackageTargetFramework = "net10.0";
+#endif
+
         // 全局 HttpClient（降低系统资源消耗）
         private static readonly HttpClient http = new HttpClient(new SocketsHttpHandler
         {
@@ -60,11 +70,11 @@ namespace LiteMonitor
         {
             
             // Gitee Releases
-            "https://gitee.com/Diorser/LiteMonitor/releases/download/v{0}/LiteMonitor_v{0}-win-x64.zip",
+            "https://gitee.com/Diorser/LiteMonitor/releases/download/v{0}/LiteMonitor_v{0}-{1}-win-x64.zip",
             // 国内 CDN
-            "https://litemonitor.cn/update/LiteMonitor_v{0}-win-x64.zip",
+            "https://litemonitor.cn/update/LiteMonitor_v{0}-{1}-win-x64.zip",
             // Github Releases
-            "https://github.com/Diorser/LiteMonitor/releases/download/v{0}/LiteMonitor_v{0}-win-x64.zip",
+            "https://github.com/Diorser/LiteMonitor/releases/download/v{0}/LiteMonitor_v{0}-{1}-win-x64.zip",
 
             
         };
@@ -249,7 +259,7 @@ namespace LiteMonitor
 
             for (int i = 0; i < Mirrors.Length; i++)
             {
-                string url = string.Format(Mirrors[i], version);
+                string url = string.Format(Mirrors[i], version, PackageTargetFramework);
                 tests[i] = TestMirrorSpeed(url);
             }
 
@@ -264,7 +274,7 @@ namespace LiteMonitor
             // 如果所有源都失败(speed=0)，至少保留默认顺序的 URL 以供重试
             if (sorted.Count == 0 || results.All(r => r.speed == 0))
             {
-                 return Mirrors.Select(m => string.Format(m, version)).ToList();
+                 return Mirrors.Select(m => string.Format(m, version, PackageTargetFramework)).ToList();
             }
 
             return sorted;
